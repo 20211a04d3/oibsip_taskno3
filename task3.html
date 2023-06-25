@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temperature Converter</title>
+  <script>
+    function convertTemperature() {
+      var temperature = parseFloat(document.getElementById("temperature").value);
+      var fromUnit = document.getElementById("fromUnit").value;
+      var toUnit = document.getElementById("toUnit").value;
+      var result;
+
+      if (fromUnit === "celsius" && toUnit === "fahrenheit") {
+        result = temperature * 9 / 5 + 32;
+      } else if (fromUnit === "fahrenheit" && toUnit === "celsius") {
+        result = (temperature - 32) * 5 / 9;
+      } else {
+        result = temperature; // If the units are the same, no conversion needed
+      }
+
+      document.getElementById("result").innerHTML = result.toFixed(2);
+
+      // Change background color based on the input value
+      if (temperature > 30) {
+        document.body.style.backgroundColor = "orange";
+      } else {
+        document.body.style.backgroundColor = "blue";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Temperature Converter</h1>
+
+  <label for="temperature">Temperature:</label>
+  <input type="number" id="temperature" placeholder="Enter temperature" required>
+
+  <label for="fromUnit">From:</label>
+  <select id="fromUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+
+  <label for="toUnit">To:</label>
+  <select id="toUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+
+  <button onclick="convertTemperature()">Convert</button>
+
+  <p id="result"></p>
+</body>
+</html>
